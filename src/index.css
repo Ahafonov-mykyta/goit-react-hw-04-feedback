@@ -1,0 +1,77 @@
+@import-normalize; /* bring in normalize.css styles */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(208, 252, 251);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items:center ;
+  flex-direction: column;
+  margin-top: 200px;
+}
+
+.title{
+  font-size: 80px;
+  color: rgb(35, 60, 87);
+}
+
+
+.btn_container{
+  display: flex;
+  flex-direction: row;
+  gap:20px ;
+
+}
+.btn{
+width: 150px;
+height: 50px;
+font-size: 20px;
+background-color: rgb(38, 142, 239);
+border: none;
+border-radius: 10px;
+color: #fff;
+transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover{
+  color: rgb(38, 142, 239);
+  background-color: #fff;
+  border: rgb(38, 142, 239) 4px solid;
+}
+
+.notification{
+  font-size: 25px;
+  background-color: rgb(248, 162, 162);
+  border-radius: 20px;
+  padding: 20px;
+  font-weight: 500;
+}
+
+.stats{
+  font-size: 25px;
+  margin: 10px;
+  font-weight: 500;
+  color: rgb(35, 60, 87);;
+}
+
+.statistics{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(151, 244, 158);
+  padding: 40px;
+  border-radius: 50px;
+}
