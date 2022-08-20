@@ -1,51 +1,54 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import Statistics from "components/Statistics/Statistics";
 import FeedbackOptions from "components/FeedbackOptions/FeedbackOptions";
 import Section from "components/Section/Section";
 
-export default class Feedback extends React.Component {
+export default function Feedback () {
 
-    state = {
-        good: 0,
-        neutral: 0,
-        bad: 0
-      }
 
-    toUpperCaseFirstLetter = (word) => {
-        const copy = word;
-        return copy[0].toUpperCase() + copy.slice(1);
+    const [good, setGood] = useState(0);
+    const [neutral, setNeutral] = useState(0);
+    const [bad, setBad] = useState(0);
+
+
+    const incrementGoodValue = (event) => {      
+        setGood( prevState => prevState + 1 )
     }  
 
-    incrementValue = (event) => {      
-        const stateElementName = event.target.textContent;
-        this.setState( prevState => ({ [stateElementName]: prevState[stateElementName] + 1} ))
-    }  
+    const incrementBadValue = (event) => {      
+      setBad( prevState => prevState + 1 )
+  }  
+  const incrementNeutralValue = (event) => {      
+    setNeutral( prevState => prevState + 1 )
+}  
 
-    countTotalFeedback = () => {
-        return this.state.good + this.state.bad + this.state.neutral;
+    const countTotalFeedback = () => {
+        return good + bad + neutral;
     }
 
-    countPositiveFeedbackPercentage = () => {
-        return Math.round(this.state.good/this.countTotalFeedback()*100)
+    const countPositiveFeedbackPercentage = () => {
+        return Math.round(good/countTotalFeedback()*100)
     }
 
-    render() {
+   
           
         return  (
         <div className="container">
             <Section title="Please leave feedback" >
                 <FeedbackOptions 
-                  options={this.state} 
-                  onLeaveFeedback={this.incrementValue}
+                  incrementGoodValue={incrementGoodValue}
+                  incrementBadValue={incrementBadValue}
+                  incrementNeutralValue={incrementNeutralValue}
                 />
             </Section> 
 
             <Section title="Statistics" >
             <Statistics 
-              state={this.state} 
-              total={this.countTotalFeedback} 
-              positivePercentage={this.countPositiveFeedbackPercentage} 
-              toUpperCase={this.toUpperCaseFirstLetter}
+              good={good}
+              bad= {bad}
+              neutral={neutral}
+              total={countTotalFeedback} 
+              positivePercentage={countPositiveFeedbackPercentage} 
             />
             </Section> 
 
@@ -53,6 +56,6 @@ export default class Feedback extends React.Component {
 
         </div>
         )
-      }
+      
 
     }
